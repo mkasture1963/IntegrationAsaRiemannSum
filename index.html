@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Integration as Convergent Riemann Sums</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:16px Arial;color:white;background:radial-gradient(circle at 15% 10%,#76509d,#43236d 45%,#21103d)}.screen{display:none;min-height:100vh;padding:25px}.screen.active{display:block}.nav{position:fixed;right:15px;top:12px;z-index:5;background:#1b0d35e8;padding:8px;border-radius:12px;display:flex;gap:6px}.nav button{padding:9px 12px;min-width:44px;min-height:40px;border:0;border-radius:8px;background:#eadcff;color:#35164f;font-weight:bold}.nav button.active{background:#ffd166}.title{width:min(1050px,calc(100% - 170px));margin:25px auto;padding:17px;background:#f2e6ff;border:2px solid white;border-radius:17px;text-align:center;box-shadow:0 12px 25px #0004}.title h1{margin:0;font-weight:900}.rainbow{font-size:clamp(25px,3.2vw,40px);background:linear-gradient(90deg,#d11b4b,#f17b19,#c9a000,#16834f,#087caa,#6840b5,#c52c91);-webkit-background-clip:text;background-clip:text;color:transparent}.red{font-size:30px;color:#c40026}.float{animation:float 3s ease-in-out infinite}@keyframes float{50%{transform:translateY(-8px)}}.identity{width:min(1000px,95%);margin:25px auto;display:grid;grid-template-columns:1fr 1fr;gap:14px}.box{display:flex;align-items:center;justify-content:center;text-align:center;padding:17px;min-height:65px;border-radius:13px;border:2px solid #fff;box-shadow:0 9px 20px #0003;font-weight:900;line-height:1.45}.wide{grid-column:1/-1}.pink{background:#ffdae9;color:#68123c}.blue{background:#d9edff;color:#153d68}.yellow{background:#fff0b8;color:#634600}.green{background:#d9f4df;color:#15542c}.orange{background:#ffe0c5;color:#713600}.mint{background:#d2f2ed;color:#07544c}.layout{display:grid;grid-template-columns:40% 60%;gap:15px;max-width:1550px;margin:auto}.panel{padding:16px;border:2px solid #fff;border-radius:15px;box-shadow:0 10px 25px #0003;color:#29183d;min-width:0}.entry{background:#f0ddff}.result{background:#dceeff}.panel h2{margin:0 0 12px;font-size:20px;font-weight:900}.field{padding:11px;margin:10px 0;border-radius:10px;background:#fff0bd;border:1px solid #e4c45c}.field:nth-child(even){background:#dcf4e3}.field label{display:block;font-weight:900;margin-bottom:7px}input{width:100%;padding:10px;border:2px solid #bba7ce;border-radius:8px;font-size:15px}.hint{font-size:11px;font-weight:bold;line-height:1.4;color:#594969}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{padding:11px 13px;border:0;border-radius:9px;background:#51247b;color:white;font-weight:900;cursor:pointer}.alt{background:#08786e}.status{color:#761d3d;font-size:12px;font-weight:bold;min-height:18px}.formula{background:#f3e7ff;color:#44215f;padding:12px;border-radius:10px;margin-top:12px;font-weight:bold;line-height:1.6}.sums{display:grid;grid-template-columns:1fr 1fr;gap:9px}.sum{background:white;padding:12px;border-radius:10px;border:1px solid #bdd0e4;color:#183e65;font-weight:bold}.sum small{display:block;color:#536a80}.sum strong{display:block;font-size:21px;margin-top:6px}.plot{background:white;border:1px solid #b8cce0;border-radius:11px;padding:9px;margin-top:12px}canvas{width:100%;height:310px;display:block}.scroll{overflow-x:auto;white-space:nowrap;padding:10px;background:#fff0c9;border-radius:9px;color:#624500;font-weight:bold;margin:10px 0}table{width:100%;border-collapse:collapse;background:white;color:#263d55;font-size:12px}th,td{border:1px solid #b8cce0;padding:7px;text-align:right;white-space:nowrap}th{background:#e8dcff;color:#432165}td:first-child,th:first-child{text-align:center}.tablewrap{overflow:auto;max-height:260px;border-radius:9px}.thanks{min-height:85vh;display:flex;align-items:center;justify-content:center}.thank{max-width:1000px;padding:45px;background:#f1e4ff;border:3px solid white;border-radius:22px;text-align:center;color:#3b1b5d;font-weight:900;line-height:1.6}.thank h1{font-size:clamp(24px,3vw,38px)}.email{display:inline-block;padding:12px;background:#ffe0bd;color:#713400;border-radius:10px}@media(max-width:850px){.layout{grid-template-columns:minmax(0,1fr)}.title{width:100%;margin-top:65px}}@media(max-width:600px){.nav{right:8px;top:8px;gap:4px}.nav button{padding:8px 10px}.identity{grid-template-columns:1fr}.wide{grid-column:auto}.screen{padding:14px}.title{margin-top:70px}.sums{grid-template-columns:1fr}}
+</style></head><body>
+<nav class="nav"><button id="nav1" class="active">01</button><button id="nav2">02</button><button id="nav3">03</button></nav>
+<section id="s1" class="screen active"><div class="title float"><h1 class="rainbow">Integration as convergent Riemann Sums</h1></div><div class="identity">
+<div class="box pink wide">Name : Miss. Urmila Sanjay Kshirsagar</div><div class="box blue wide">Class : F.Y.M.Sc.(Mathematics)</div><div class="box yellow">Semester : I</div><div class="box green">PRN : 42658570002</div><div class="box orange wide">Project Guide : Dr Prachi Nerkar, Associate Professor In Physics, JSPM University Pune</div><div class="box mint wide">Technical Advisor : Prof. Madhukar Kasture, Professor Emeritus In Statistics, JSPM University Pune</div></div></section>
+<section id="s2" class="screen"><div class="title"><h1 class="red">Integration By First Principle</h1></div><div class="layout">
+<aside class="panel entry"><h2>Function &amp; Partition Data</h2>
+<div class="field"><label for="fx">Integrand Function f(x) =</label><input id="fx" value="x^2"><p class="hint">Supported: x, numbers, + − * / ^, parentheses, sin, cos, tan, exp, ln, log, sqrt, abs, pi, e. Trigonometric functions use radians.</p></div>
+<div class="field"><label for="L">Lower Limit of Integration as 'L' =</label><input id="L" type="number" step="any" value="0"></div>
+<div class="field"><label for="U">Upper Limit of Integration as 'U' =</label><input id="U" type="number" step="any" value="2"><p class="hint">U must be strictly greater than L.</p></div>
+<div class="field"><label for="N">Number of partitions as 'N' =</label><input id="N" type="number" min="1" step="1" value="8"></div>
+<div class="actions"><button class="btn" onclick="calculate()">Compute Riemann Sums</button><button class="btn alt" onclick="reset()">Reset</button></div><p id="status" class="status"></p>
+<div class="formula">H = (U − L) / N<br><br>Lower Riemann Sum: L<sub>N</sub>(f) = H Σ mᵢ, where mᵢ = inf f(x) on subinterval i.<br><br>Upper Riemann Sum: U<sub>N</sub>(f) = H Σ Mᵢ, where Mᵢ = sup f(x) on subinterval i.</div></aside>
+<main class="panel result"><h2>Function Plot, Rectangular Bars &amp; Riemann Analysis</h2><div class="sums"><div class="sum"><small>Lower Riemann Sum</small><strong id="loSum">—</strong></div><div class="sum"><small>Upper Riemann Sum</small><strong id="upSum">—</strong></div><div class="sum"><small>Width H</small><strong id="hVal">—</strong></div><div class="sum"><small>Partitions N</small><strong id="nVal">—</strong></div><div class="sum" style="grid-column:1/-1;background:#e2f5e9"><small>Numerical Definite Integral ∫ₗᵁ f(x) dx</small><strong id="integralVal">—</strong><small id="integralError">Adaptive Simpson estimate</small></div></div>
+<div class="plot"><canvas id="graph" width="1000" height="410"></canvas><p class="hint">Graph axes include numerical tick scales and labels. Purple curve: f(x). Light bars: width H and height max(f(left endpoint), f(right endpoint)), exactly as requested. Endpoint bars are a visual aid and are not necessarily upper-sum rectangles for non-monotone functions.</p></div>
+<h3>Subintervals (horizontal scrolling)</h3><div id="parts" class="scroll">Calculate to display subintervals.</div><h3>Infimum &amp; Supremum Vector Table</h3><div class="tablewrap"><table><thead><tr><th>i</th><th>Interval</th><th>Approx. infimum</th><th>Approx. supremum</th><th>H·mᵢ</th><th>H·Mᵢ</th></tr></thead><tbody id="extrema"><tr><td colspan="6">Results appear after calculation.</td></tr></tbody></table></div><div id="interpret" class="formula">Numerical extrema are estimated through dense sampling and local refinement; exact extrema should be verified analytically for the selected function.</div></main></div></section>
+<section id="s3" class="screen"><div class="thanks"><div class="thank"><h1>Thank You for visiting AI assisted module on<br><span style="color:#6c36a5">“Integration as Riemann Sum”</span></h1><p>Your valuable suggestions, comments, opinions, appreciation, addition are highly solicited. Please feel free to drop a mail on</p><div class="email">mkasture1963@gmail.com</div></div></div></section>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  [1,2,3].forEach(k=>{
+    const button=document.getElementById('nav'+k);
+    if(button) button.addEventListener('click',()=>showScreen(k));
+  });
+});
+function showScreen(k){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById('s'+k).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));document.getElementById('nav'+k).classList.add('active')}
+/* Arithmetic expression parser, deliberately avoids eval(). */
+function parser(src){let s=src.replace(/\s/g,'').toLowerCase(),p=0;const fun={sin:Math.sin,cos:Math.cos,tan:Math.tan,exp:Math.exp,ln:Math.log,log:Math.log10,sqrt:Math.sqrt,abs:Math.abs};
+function expr(){let a=term();while(s[p]=='+'||s[p]=='-'){let o=s[p++],b=term(),old=a;a=o=='+'?x=>old(x)+b(x):x=>old(x)-b(x)}return a}
+function term(){let a=pow();while(s[p]=='*'||s[p]=='/'){let o=s[p++],b=pow(),old=a;a=o=='*'?x=>old(x)*b(x):x=>old(x)/b(x)}return a}
+function pow(){let a=unary();if(s[p]=='^'){p++;let b=pow(),old=a;a=x=>Math.pow(old(x),b(x))}return a}
+function unary(){if(s[p]=='+'){p++;return unary()}if(s[p]=='-'){p++;let a=unary();return x=>-a(x)}return atom()}
+function atom(){if(s[p]=='('){p++;let a=expr();if(s[p++]!=')')throw Error('Missing closing parenthesis');return a}if(s[p]=='x'){p++;return x=>x}
+let m=s.slice(p).match(/^(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?/);if(m){p+=m[0].length;let c=+m[0];return x=>c}
+m=s.slice(p).match(/^[a-z]+/);if(m){let id=m[0];p+=id.length;if(id=='pi')return x=>Math.PI;if(id=='e')return x=>Math.E;if(fun[id]){if(s[p++]!='(')throw Error(id+' requires parentheses');let a=expr();if(s[p++]!=')')throw Error('Missing function parenthesis');return x=>fun[id](a(x))}throw Error('Unknown function/symbol: '+id)}throw Error('Invalid expression near '+s.slice(p))}
+let f=expr();if(p!=s.length)throw Error('Unexpected expression text '+s.slice(p));return f}
+function val(id,label){let t=document.getElementById(id).value,v=Number(t);if(!t.trim()||!Number.isFinite(v))throw Error(label+' must be a finite real number');return v}
+function fmt(x){return Number.isFinite(x)?Number(x.toPrecision(7)).toString():'undefined'}
+function adaptiveSimpson(f,a,b,tol=1e-9,maxDepth=22){
+  const safe=x=>{let y=f(x);if(!Number.isFinite(y))throw Error('The integrand is undefined/non-finite during integration. Check its domain and singularities.');return y};
+  const sim=(a,b,fa,fm,fb)=>((b-a)/6)*(fa+4*fm+fb);
+  let m=(a+b)/2,fa=safe(a),fm=safe(m),fb=safe(b),whole=sim(a,b,fa,fm,fb),evals=3;
+  function rec(a,b,fa,fm,fb,S,tol,depth){
+    let m=(a+b)/2,lm=(a+m)/2,rm=(m+b)/2,fl=safe(lm),fr=safe(rm);evals+=2;
+    let left=sim(a,m,fa,fl,fm),right=sim(m,b,fm,fr,fb),delta=left+right-S;
+    if(depth<=0||Math.abs(delta)<=15*tol)return {value:left+right+delta/15,error:Math.abs(delta/15)};
+    let A=rec(a,m,fa,fl,fm,left,tol/2,depth-1),B=rec(m,b,fm,fr,fb,right,tol/2,depth-1);
+    return {value:A.value+B.value,error:A.error+B.error};
+  }
+  let result=rec(a,b,fa,fm,fb,whole,tol,maxDepth);result.evaluations=evals;return result;
+}
+function calculate(){let status=document.getElementById('status');try{let f=parser(document.getElementById('fx').value),L=val('L','L'),U=val('U','U'),N=val('N','N');if(U<=L)throw Error('U must be greater than L');if(!Number.isSafeInteger(N)||N<1)throw Error('N must be a positive integer');if(N>1000)throw Error('N is limited to 1000 partitions for browser performance');let integral=adaptiveSimpson(f,L,U),H=(U-L)/N,rows=[],low=0,up=0,ev=x=>{let y=f(x);if(!Number.isFinite(y))throw Error('Function is undefined/non-finite on the interval; check its domain');return y},ns=Math.max(90,Math.min(300,Math.floor(18000/N)));
+for(let i=0;i<N;i++){let a=L+i*H,b=i==N-1?U:L+(i+1)*H,ys=[];for(let j=0;j<=ns;j++)ys.push(ev(a+(b-a)*j/ns));let mn=Math.min(...ys),mx=Math.max(...ys);low+=H*mn;up+=H*mx;rows.push({i:i+1,a,b,mn,mx,lo:H*mn,up:H*mx,bar:Math.max(ev(a),ev(b))})}
+document.getElementById('loSum').textContent=fmt(low);document.getElementById('upSum').textContent=fmt(up);document.getElementById('hVal').textContent=fmt(H);document.getElementById('nVal').textContent=N;document.getElementById('integralVal').textContent=fmt(integral.value);document.getElementById('integralError').textContent='Estimated absolute error ≈ '+fmt(integral.error)+' (adaptive Simpson; '+integral.evaluations+' function evaluations)';document.getElementById('parts').textContent=rows.map(r=>`(${fmt(r.a)}, ${fmt(r.b)})`).join('  |  ');document.getElementById('extrema').innerHTML=rows.map(r=>`<tr><td>${r.i}</td><td>[${fmt(r.a)}, ${fmt(r.b)}]</td><td>${fmt(r.mn)}</td><td>${fmt(r.mx)}</td><td>${fmt(r.lo)}</td><td>${fmt(r.up)}</td></tr>`).join('');plot(f,L,U,rows,ev);document.getElementById('interpret').innerHTML=`For f(x) = ${document.getElementById('fx').value} on [${fmt(L)}, ${fmt(U)}], H = ${fmt(H)} and N = ${N}.<br>Lower sum ≈ ${fmt(low)}; upper sum ≈ ${fmt(up)}.<br>Numerical definite integral ≈ ${fmt(integral.value)} (estimated error ${fmt(integral.error)}).<br>For a bounded Riemann-integrable function, lower and upper sums converge to the definite integral as the partition mesh tends to zero. The displayed extrema are numerical estimates, not symbolic proofs.`;status.textContent='Partition and numerical Riemann sums computed.'}catch(e){status.textContent=e.message}}
+function niceStep(span){
+  if(!(span>0)||!Number.isFinite(span))return 1;
+  let raw=span/5,pow=Math.pow(10,Math.floor(Math.log10(raw))),q=raw/pow;
+  return (q<=1?1:q<=2?2:q<=5?5:10)*pow;
+}
+function plot(f,L,U,rows,ev){
+  let c=document.getElementById('graph'),g=c.getContext('2d'),w=c.width,h=c.height,
+      l=76,r=24,t=28,b=52,ys=[];
+  for(let j=0;j<=1000;j++){let y=f(L+(U-L)*j/1000);if(Number.isFinite(y))ys.push(y)}
+  rows.forEach(q=>ys.push(q.mn,q.mx,q.bar));
+  let ymin=Math.min(...ys),ymax=Math.max(...ys);
+  if(ymin===ymax){ymin-=1;ymax+=1}
+  let pad=(ymax-ymin)*.12;ymin-=pad;ymax+=pad;
+  let yStep=niceStep(ymax-ymin),yStart=Math.ceil(ymin/yStep)*yStep,yEnd=Math.floor(ymax/yStep)*yStep;
+  let xStep=niceStep(U-L),xStart=Math.ceil(L/xStep)*xStep,xEnd=Math.floor(U/xStep)*xStep;
+  let X=x=>l+(x-L)/(U-L)*(w-l-r),Y=y=>h-b-(y-ymin)/(ymax-ymin)*(h-t-b);
+  g.clearRect(0,0,w,h);g.fillStyle='white';g.fillRect(0,0,w,h);
+  g.font='13px Arial';g.textAlign='right';g.textBaseline='middle';
+  g.strokeStyle='#dce4ed';g.lineWidth=1;
+  for(let y=yStart,guard=0;y<=yEnd+yStep*1e-8&&guard<100; y+=yStep,guard++){
+    let yy=Y(y);g.beginPath();g.moveTo(l,yy);g.lineTo(w-r,yy);g.stroke();
+    g.fillStyle='#334b62';g.fillText(fmt(y),l-10,yy);
+    g.beginPath();g.moveTo(l-5,yy);g.lineTo(l,yy);g.strokeStyle='#42566b';g.stroke();g.strokeStyle='#dce4ed';
+  }
+  for(let x=xStart,guard=0;x<=xEnd+xStep*1e-8&&guard<100;x+=xStep,guard++){
+    let xx=X(x);g.beginPath();g.moveTo(xx,t);g.lineTo(xx,h-b);g.stroke();
+    g.fillStyle='#334b62';g.textAlign='center';g.textBaseline='top';g.fillText(fmt(x),xx,h-b+9);
+    g.beginPath();g.moveTo(xx,h-b);g.lineTo(xx,h-b+5);g.strokeStyle='#42566b';g.stroke();g.strokeStyle='#dce4ed';
+  }
+  // Plot axes at zero when zero lies in range; otherwise plot the visible boundary axes.
+  let xAxisY=(ymin<=0&&ymax>=0)?Y(0):Y(ymin),yAxisX=(L<=0&&U>=0)?X(0):X(L);
+  g.strokeStyle='#263e55';g.lineWidth=2;g.beginPath();g.moveTo(l,xAxisY);g.lineTo(w-r,xAxisY);g.moveTo(yAxisX,t);g.lineTo(yAxisX,h-b);g.stroke();
+  // Endpoint-based rectangles, matching the specification.
+  g.fillStyle='rgba(235,177,60,.28)';g.strokeStyle='#b98522';g.lineWidth=1;
+  rows.forEach(q=>{
+    let base=Y(0),top=Y(q.bar);
+    if(!Number.isFinite(base)||!Number.isFinite(top)){base=xAxisY;top=Y(q.bar)}
+    g.fillRect(X(q.a),Math.min(top,base),Math.max(1,X(q.b)-X(q.a)),Math.abs(base-top));
+    g.strokeRect(X(q.a),Math.min(top,base),Math.max(1,X(q.b)-X(q.a)),Math.abs(base-top));
+  });
+  g.strokeStyle='#6c36a5';g.lineWidth=3;g.beginPath();let begun=false;
+  for(let j=0;j<=1200;j++){let x=L+(U-L)*j/1200,y=f(x);if(!Number.isFinite(y)){begun=false;continue}
+    if(!begun){g.moveTo(X(x),Y(y));begun=true}else g.lineTo(X(x),Y(y))}
+  g.stroke();g.fillStyle='#263e55';g.font='bold 14px Arial';g.textAlign='center';g.textBaseline='alphabetic';
+  g.fillText('x  (scale: '+fmt(xStep)+' per tick)',(l+w-r)/2,h-10);
+  g.save();g.translate(17,(t+h-b)/2);g.rotate(-Math.PI/2);g.fillText('y = f(x)  (scale: '+fmt(yStep)+' per tick)',0,0);g.restore();
+}
+function reset(){['fx','L','U','N'].forEach((id,i)=>document.getElementById(id).value=['x^2','0','2','8'][i]);document.getElementById('status').textContent='';['loSum','upSum','hVal','nVal','integralVal'].forEach(id=>document.getElementById(id).textContent='—');document.getElementById('parts').textContent='Calculate to display subintervals';document.getElementById('extrema').innerHTML='<tr><td colspan="6">Results appear after calculation.</td></tr>';document.getElementById('integralError').textContent='Adaptive Simpson estimate';document.getElementById('graph').getContext('2d').clearRect(0,0,1000,410)}
+</script></body></html>
